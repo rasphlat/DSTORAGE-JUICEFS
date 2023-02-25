@@ -32,14 +32,14 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         
-        //Configuration for connecting to JuiceFS using Hadoop Compatible SDK
+        // Configuration for connecting to JuiceFS using Hadoop Compatible SDK
         Configuration conf = new Configuration();
         conf.set("fs.jfs.impl", "io.juicefs.JuiceFileSystem");
         conf.set("juicefs.meta", "redis://127.0.0.1:6379/1"); // JuiceFS metadata engine URL
-        Path p = new Path("jfs://myjfs/myjfs"); // Please replace "{JFS_NAME}" with the correct value
+        Path p = new Path("jfs://myjfs/myjfs");
         FileSystem jfs = p.getFileSystem(conf);
 
-        //Configuration for Kafka Confumer
+        // Configuration for Kafka Consumer
         String bootstrapServers = "127.0.0.1:9092";
         String groupId = "kafka";
         List<String> topics = new ArrayList<String>();
