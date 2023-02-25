@@ -1,9 +1,9 @@
 # #DSTORAGE-JUICEFS
 
-Distributed storage with JuiceFS
 This project aims to create a data pipeline for processing and analyzing IoT data from different devices. The pipeline consists of various components including data ingestion, storage, processing, and visualization. The pipeline uses Kafka, JuiceFS, and Spark to achieve scalability, fault-tolerance, and high-performance processing.
 
 # Architecture
+<img src="https://media.giphy.com/media/hCAndh3LRpdH5CqHHh/giphy.gif" width=400px></img>
 
 The architecture of the project consists of the following components:
 
@@ -12,6 +12,7 @@ The architecture of the project consists of the following components:
   https://github.com/massimocallisto/iot-simulator
 
 ## Kafka
+ <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Apache_kafka_wordtype.svg"> 
 The Kafka broker receives the JSON messages from the IoT devices and stores them in topics.
 It is assemed that Kafka is already running and listening on port 9092.
 Set also in console the following variable.
@@ -63,6 +64,9 @@ Then submit to the worker:
   The Persistor Prototype is composed of a producer and consumer that are connected to Kafka. The producer sends an ack with the UUID of the iot json file  received and the consumer stores the IoT json messages received from kafka in JuiceFS or consume the messages from the ack topic and use another method of the persistor prototype to create a log file after the ack with the uuid of each files.
   
 ## JuiceFS
+ <img width="200" alt="Flutter Logo" src="https://user-images.githubusercontent.com/56829605/221372535-38afe501-86ed-44e9-bf9f-a39797ac4832.svg"> 
+
+
 The JuiceFS is a distributed file system that provides consistent and scalable storage for the IoT data. The consumer stores the IoT json messages received from kafka in JuiceFS.
 
  To configure JuiceFS, you will need to install the client software on each node in your cluster. The client software can be downloaded from the Juice Technologies website or from GitHub. Once installed, you will need to configure the client with the following commands:
