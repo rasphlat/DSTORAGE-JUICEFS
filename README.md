@@ -64,7 +64,7 @@ Then submit to the worker:
   The Persistor Prototype is composed of a producer and consumer that are connected to Kafka. The producer sends an ack with the UUID of the iot json file  received and the consumer stores the IoT json messages received from kafka in JuiceFS or consume the messages from the ack topic and use another method of the persistor prototype to create a log file after the ack with the uuid of each files.
   
 ## JuiceFS
- <img width="200" alt="Flutter Logo" src="https://user-images.githubusercontent.com/56829605/221372535-38afe501-86ed-44e9-bf9f-a39797ac4832.svg"> 
+ <img width="200" src="https://user-images.githubusercontent.com/56829605/221372535-38afe501-86ed-44e9-bf9f-a39797ac4832.svg"> 
 
 
 The JuiceFS is a distributed file system that provides consistent and scalable storage for the IoT data. The consumer stores the IoT json messages received from kafka in JuiceFS.
@@ -82,6 +82,8 @@ Minio must run on the port 9000.
  - `juicefs unmount <mountpoint>` - This command unmounts a directory from your filesystem that was previously mounted as a mountpoint in JuiceFS.
 
 ## Spark
+ <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg"> 
+
 Spark is used for processing and analyzing the IoT data stored in JuiceFS. Spark's processing capability is enhanced by the use of Scala queries to analyze the data. A possible query is the following one:
 - `val df = spark.read.json("file:///mnt/jfs/user/thinkpad/yyyy/mm/dd/")` - where yyyy/mm/dd is the date to be analized
 - `df.show()` - to show all the content in that folder
