@@ -84,9 +84,22 @@ Minio must run on the port 9000.
 ## Spark
  <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg"> 
 
-Spark is used for processing and analyzing the IoT data stored in JuiceFS. Spark's processing capability is enhanced by the use of Scala queries to analyze the data. A possible query is the following one:
-- `val df = spark.read.json("file:///mnt/jfs/user/thinkpad/yyyy/mm/dd/")` - where yyyy/mm/dd is the date to be analized
-- `df.show()` - to show all the content in that folder
+Spark is used for processing and analyzing the IoT data stored in JuiceFS. Spark's processing capability is enhanced by the use of Scala queries to analyze the data.
+
+To allow Spark to access the data saved in JuiceFS it is needed to write the following configuration inside $SPARK_HOME/conf/spark-defaults.conf
+
+```
+spark.hadoop.fs.jfs.impl=io.juicefs.JuiceFileSystem
+spark.hadoop.fs.AbstractFileSystem.jfs.impl=io.juicefs.JuiceFS
+spark.hadoop.juicefs.meta=redis://127.0.0.1:6379/1
+```
+
+In order to run the Spark application first run 'mvn packages' inside the sparkjob directory then run
+
+```
+$SPARK_HOME/bin/spark-submit --class "com.dstorage.App" /target/sparkjob-1.0-SNAPSHOT.jar
+```
+
 
 
 # Get Started
